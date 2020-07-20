@@ -1,0 +1,39 @@
+# This is a workflow to run shellcheck on all scripts
+name: Wiki Upload
+
+# Controls when the action will run. Triggers the workflow on push and/or pull request
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  wiki-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: source
+          ref: master
+      - name: Checkout tools repo
+        uses: actions/checkout@v2
+        with:
+          repository: jailmanager/wiki
+          path: target
+          ref: master
+      - run: echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | sed -e "s/:refs//")
+        shell: bash
+      - run: mv source/README.md source/readme.md || true
+      - run: mv source/README.MD source/readme.md || true
+      - run: cp source/readme.md target/content/plugins/${GITHUB_REPOSITORY#jailmanager/iocage-plugin-}.md
+        shell: bash
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.WIKI_PAT }}
+        with:
+          source-directory: 'target'
+          destination-github-username: 'jailmanager'
+          destination-repository-name: 'wiki'
+          user-email: wikibot@jailmanager.org
