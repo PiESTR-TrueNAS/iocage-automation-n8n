@@ -2,7 +2,7 @@
   "official": false,
   "revision": "0",
   "name": "HOMEMADE_N8N",
-  "release": "12.1-RELEASE",
+  "release": "12.2-RELEASE",
   "artifact": "https://github.com/PiESTR-TrueNAS/iocage-automation-n8n.git",
   "properties": {
     "boot": "1",
