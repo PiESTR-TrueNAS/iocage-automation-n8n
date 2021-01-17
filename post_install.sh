@@ -4,7 +4,7 @@
 # This is executed BEFORE any jailman scripts
 
 # ===== Install packages
-npm install --unsafe-perm -f n8n
+npm install --unsafe-perm -g n8n
 
 # ===== Start n8n on boot
 bin=$(which n8n)
