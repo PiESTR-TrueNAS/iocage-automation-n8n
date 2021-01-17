@@ -1,3 +1,4 @@
 {
-	"adminportal": "http://%%IP%%"
+  "adminportal": "http://%%IP%%",
+  "docurl": "https://n8n.io/"
 }

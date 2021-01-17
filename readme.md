@@ -1,4 +1,13 @@
-# Plugin Template
+# iocage-automation-n8n
 
-This Repository contains a templatate to base your plugin on.
-Please be aware: When submitting your plugin, this readme gets added to the Wiki
+## Installing Plugins
+Download the plugin manifest file to your local file system.
+
+```bash
+fetch https://raw.githubusercontent.com/PiESTR-TrueNAS/iocage-automation-n8n/master/manifest.json
+```
+
+Install the plugin. Adjust the network settings as needed.
+```bash
+iocage fetch -P manifest.json
+```

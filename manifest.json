@@ -1,0 +1,25 @@
+{
+  "official": false,
+  "revision": "0",
+  "name": "HOMEMADE_N8N",
+  "release": "12.1-RELEASE",
+  "artifact": "https://github.com/PiESTR-TrueNAS/iocage-automation-n8n.git",
+  "properties": {
+    "boot": "1",
+    "bpf": "1",
+    "dhcp": "1",
+    "vnet": "1"
+  },
+  "pkgs": [
+    "node14", "npm-node14"
+  ],
+  "packagesite": "http://pkg.FreeBSD.org/${ABI}/latest",
+  "fingerprints": {
+    "plugin-default": [
+      {
+        "function": "sha256",
+        "fingerprint": "b0170035af3acc5f3f3ae1859dc717101b4e6c1d0a794ad554928ca0cbb2f438"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+name: Push manifest to main repository
+
+# Controls when the action will run. Triggers the workflow on push or pull request events but
+# only for the main branch
+on:
+  push:
+    branches:
+      - master
+    paths:
+      # Trigger on change in following path
+      - 'manifest.json'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger manifest repository
+        run: |
+          curl -XPOST \
+          -u "${{ secrets.PAT_USERNAME }}:${{ secrets.PAT_TOKEN }}" \
+          -H "Accept: application/vnd.github.everest-preview+json" \
+          -H "Content-Type: application/json" \
+          https://api.github.com/repos/${{ secrets.MANIFEST_REPOSITORY }}/dispatches \
+          --data '{"event_type": "build_application"}'
