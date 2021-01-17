@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - run: echo "::set-env name=SCRIPT_FILES::$( find . -name '*.sh' | xargs echo $1)"
+      - run: echo "SCRIPT_FILES=$( find . -name '*.sh' | xargs echo $1 )" >> $GITHUB_ENV
       - name: Shell Linter
         uses: azohra/shell-linter@v0.3.0
         with:
